@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kanban/ui/widgets/done_progress_indicator.dart';
+import 'package:kanban/ui/top_container/done_progress_indicator.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class TopContainer extends StatelessWidget {
