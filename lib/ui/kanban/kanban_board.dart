@@ -16,15 +16,19 @@ class KanbanBoard extends StatelessWidget {
         
         return ShadTabs(
           value: status,
-          tabs: KanbanStatus.values
+          expandContent: true,
+          contentConstraints: BoxConstraints.expand(
+            height: 0,
+          ),
+          tabs: KanbanStatus.values 
               .map(
                 (e) => ShadTab(
                   value: e, 
                   content: KanbanList(status: e),
                   child: Text(e.label),
-                ),
-              )
-              .toList(),
+              ),
+            )
+          .toList(),
         );
       },
     );
