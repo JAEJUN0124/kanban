@@ -21,6 +21,9 @@ dependencies:
   # 상태 관리 라이브러리
   provider: ^6.1.5+1
 
+  # ID 생성을 위함
+  uuid: 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

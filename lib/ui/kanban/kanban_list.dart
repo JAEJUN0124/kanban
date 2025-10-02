@@ -27,9 +27,8 @@ class KanbanList extends StatelessWidget {
             child: Consumer<KanbanProvider>(
               builder: (context, provider, _) {
                 final items = provider.items;
-                final searchedItems = items.where((e) => e.$1 == status).toList();
-                
-                // 왜 인프로그래스 누르면 투두로 가는가? / 리스트는 3개 seprated는 리스트 1개 사용? / 프로바이더를 남용하면 안되는 이유?
+                final searchedItems = items.where(
+                  (e) => e.status == status).toList();
 
                 return ListView.separated(
                   itemCount: searchedItems.length,
@@ -38,15 +37,17 @@ class KanbanList extends StatelessWidget {
                     return SizedBox(height: 20);
                   },
                   itemBuilder: (context, index) {
+                    final item = searchedItems[index];
+                    
                     return KanbanItem(
                       status: status,
-                      title: 'New Task ${index+1}',
+                      title: item.title,
                       onCheckbox: () {
                         debugPrint('$status -> 체크박스');
                       },
                       onDelete: () {
                         debugPrint('$status -> 삭제');
-                        context.read<KanbanProvider>().deleteItemindex(index);
+                        provider.deleteItem(item.id);
                       },
                       onStatus: () {
                 
